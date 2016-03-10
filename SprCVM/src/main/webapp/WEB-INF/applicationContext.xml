@@ -18,7 +18,7 @@
 	<!-- Data config holder -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-		p:location="db.properties" />
+		p:location="/WEB-INF/db.properties" />
 
 	<!-- Jpa Vendor -->
 	<bean id="jpaVendorAdapter"
