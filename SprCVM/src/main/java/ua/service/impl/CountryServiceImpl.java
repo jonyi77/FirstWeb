@@ -1,7 +1,5 @@
 package ua.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +18,14 @@ public class CountryServiceImpl implements CountryService{
 		countryRepository.save(country);
 	}
 
-	public void delete(int id) {
-		countryRepository.delete(id);
+	public void delete(String id) {
+		try {
+			int parsI = Integer.parseInt(id);
+			countryRepository.delete(parsI);
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+		}
+		
 		
 	}
 
@@ -34,8 +38,8 @@ public class CountryServiceImpl implements CountryService{
 		return savedCountry;
 	}
 
-	public List<Country> getAll() {
-		return (List<Country>) countryRepository.findAll();
+	public Iterable<Country> getAll() {
+		return countryRepository.findAll();
 	}
 	
 	
