@@ -12,16 +12,17 @@
 	<br>
 	<br>
 	<form method="post">
-		<input name="name">
-		<input type="submit" value="Ok">
+		<input name="name"> <input type="submit" value="Ok">
 	</form>
 	<table>
-	<c:forEach var="country" items="${countries}">
-		<tr>
-			<td>${country.name}</td>
-			<td><c:url value="/country/${country.id}" var="url"/><a href="${url}">delete</a></td>
-		</tr>
-	</c:forEach>
+		<c:forEach var="style" items="${styles}">
+			<tr>
+				<td>${style.name}</td>
+				<td><c:url value="/style/${style.id}" var="url"/><a href="${url}">delete</a></td>
+			</tr>
+
+		</c:forEach>
+
 	</table>
 
 </body>

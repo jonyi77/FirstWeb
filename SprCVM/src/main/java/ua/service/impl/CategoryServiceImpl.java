@@ -1,7 +1,5 @@
 package ua.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +13,19 @@ public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	public Category addCategory(Category category) {
-		Category saveCategory = categoryRepository.save(category);
-		return saveCategory;
+	public void save(String name) {
+		Category category = new Category();
+		category.setName(name);
+		categoryRepository.save(category);
 	}
 
-	public void delete(int id) {
-		categoryRepository.delete(id);
-
+	public void delete(String id) {
+		try {
+			int idParce = Integer.parseInt(id);
+			categoryRepository.delete(idParce);
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+		}
 	}
 
 	public Category getByName(String name) {
@@ -34,8 +37,8 @@ public class CategoryServiceImpl implements CategoryService {
 		return saveCategory;
 	}
 
-	public List<Category> getAll() {
-		return (List<Category>) categoryRepository.findAll();
+	public Iterable<Category> getAll() {
+		return categoryRepository.findAll();
 	}
 
 }

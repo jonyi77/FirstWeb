@@ -1,7 +1,5 @@
 package ua.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +13,20 @@ public class BrandServiceImpl implements BrandService {
 	@Autowired
 	private BrandRepository brandRepository;
 
-	public Brand addBrand(Brand brand) {
-		Brand saveBrand = brandRepository.save(brand);
-		return saveBrand;
+	public void save(String name) {
+		Brand brand = new Brand();
+		brand.setName(name);
+		brandRepository.save(brand);
+
 	}
 
-	public void delete(int id) {
-		brandRepository.delete(id);
+	public void delete(String id) {
+		try {
+			int idParse = Integer.parseInt(id);
+			brandRepository.delete(idParse);
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+		}
 	}
 
 	public Brand getByName(String name) {
@@ -33,8 +38,8 @@ public class BrandServiceImpl implements BrandService {
 		return saveBrand;
 	}
 
-	public List<Brand> getAll() {
-		return (List<Brand>) brandRepository.findAll();
+	public Iterable<Brand> getAll() {
+		return brandRepository.findAll();
 	}
 
 }

@@ -1,7 +1,5 @@
 package ua.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +13,20 @@ public class ColorServiceImpl implements ColorService {
 	@Autowired
 	private ColorRepository colorRepository;
 
-	public Color addColor(Color color) {
-		Color saveColor = colorRepository.save(color);
-		return saveColor;
+	public void save(String name) {
+		Color color = new Color();
+		color.setName(name);
+		colorRepository.save(color);
+
 	}
 
-	public void delete(int id) {
-		colorRepository.delete(id);
+	public void delete(String id) {
+		try {
+			int parsI = Integer.parseInt(id);
+			colorRepository.delete(parsI);
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+		}
 
 	}
 
@@ -34,8 +39,8 @@ public class ColorServiceImpl implements ColorService {
 		return saveColor;
 	}
 
-	public List<Color> getAll() {
-		return (List<Color>) colorRepository.findAll();
+	public Iterable<Color> getAll() {
+		return colorRepository.findAll();
 	}
 
 }

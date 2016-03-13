@@ -1,15 +1,13 @@
 package ua.service;
 
-import java.util.List;
-
 import ua.entity.Brand;
 
 public interface BrandService {
 	
-	Brand addBrand(Brand brand);
-	void delete(int id);
+	void save(String name);
+	void delete(String id);
 	Brand getByName(String name);
 	Brand editBrand(Brand brand);
-	List<Brand> getAll();
+	Iterable<Brand> getAll();
 
 }

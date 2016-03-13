@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,12 +16,12 @@
 		<input type="submit" value="Ok">
 	</form>
 	<table>
-	<c:forEach var="country" items="${countries}">
-		<tr>
-			<td>${country.name}</td>
-			<td><c:url value="/country/${country.id}" var="url"/><a href="${url}">delete</a></td>
-		</tr>
-	</c:forEach>
+		<c:forEach var="type" items="${types}">
+			<tr>
+				<td>${type.name}</td>
+				<td><c:url value="/type/${type.id}" var="url"/><a href="${url}">delete</a></td>
+			</tr>
+		</c:forEach>
 	</table>
 
 </body>

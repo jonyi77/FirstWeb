@@ -1,7 +1,5 @@
 package ua.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +13,19 @@ public class SeasonServiceImpl implements SeasonService {
 	@Autowired
 	private SeasonRepository seasonRepository;
 	
-	public Season addSeason(Season season) {
-		Season saveSeason = seasonRepository.save(season);
-		return saveSeason;
+	public void save(String name) {
+		Season season = new Season();
+		season.setName(name);
+		seasonRepository.save(season);
 	}
 
-	public void delete(int id) {
-		seasonRepository.delete(id);
-
+	public void delete(String id) {
+		try {
+			int idParse = Integer.parseInt(id);
+			seasonRepository.delete(idParse);
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+		}
 	}
 
 	public Season getByName(String name) {
@@ -34,8 +37,8 @@ public class SeasonServiceImpl implements SeasonService {
 		return saveSeason;
 	}
 
-	public List<Season> getAll() {
-		return (List<Season>) seasonRepository.findAll();
+	public Iterable<Season> getAll() {
+		return seasonRepository.findAll();
 	}
 
 }

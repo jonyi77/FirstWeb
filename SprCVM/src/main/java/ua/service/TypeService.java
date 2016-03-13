@@ -1,15 +1,13 @@
 package ua.service;
 
-import java.util.List;
-
 import ua.entity.Type;
 
 public interface TypeService {
 	
-	Type addType(Type type);
-	void delete(int id);
+	void save(String name);
+	void delete(String id);
 	Type getByName(String name);
 	Type editName(Type type);
-	List<Type> getAll();
+	Iterable<Type> getAll();
 
 }

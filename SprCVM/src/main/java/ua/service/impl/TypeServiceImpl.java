@@ -1,7 +1,5 @@
 package ua.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +13,19 @@ public class TypeServiceImpl implements TypeService {
 	@Autowired
 	private TypeRepository typeRepository;
 
-	public Type addType(Type type) {
-		Type saveType = typeRepository.save(type);
-		return saveType;
+	public void save(String name) {
+		Type type = new Type();
+		type.setName(name);
+		typeRepository.save(type);
 	}
 
-	public void delete(int id) {
-		typeRepository.delete(id);
+	public void delete(String id) {
+		try {
+			int idParse = Integer.parseInt(id);
+			typeRepository.delete(idParse);
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+		}
 	}
 
 	public Type getByName(String name) {
@@ -33,8 +37,8 @@ public class TypeServiceImpl implements TypeService {
 		return saveType;
 	}
 
-	public List<Type> getAll() {
-		return (List<Type>) typeRepository.findAll();
+	public Iterable<Type> getAll() {
+		return typeRepository.findAll();
 	}
 
 }

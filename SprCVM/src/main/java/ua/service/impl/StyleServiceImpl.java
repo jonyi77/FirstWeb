@@ -1,7 +1,5 @@
 package ua.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +13,19 @@ public class StyleServiceImpl implements StyleService {
 	@Autowired
 	private StyleRepository styleRepository;
 
-	public Style addStyle(Style style) {
-		Style saveStyle = styleRepository.save(style);
-		return saveStyle;
+	public void save(String name) {
+		Style style = new Style();
+		style.setName(name);
+		styleRepository.save(style);
 	}
 
-	public void delete(int id) {
-		styleRepository.delete(id);
+	public void delete(String id) {
+		try {
+			int idParse = Integer.parseInt(id);
+			styleRepository.delete(idParse);
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+		}
 	}
 
 	public Style getByName(String name) {
@@ -33,8 +37,8 @@ public class StyleServiceImpl implements StyleService {
 		return saveStyle;
 	}
 
-	public List<Style> getAll() {
-		return (List<Style>) styleRepository.findAll();
+	public Iterable<Style> getAll() {
+		return styleRepository.findAll();
 	}
 
 }
