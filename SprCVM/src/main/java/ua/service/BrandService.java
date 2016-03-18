@@ -9,5 +9,6 @@ public interface BrandService {
 	Brand getByName(String name);
 	Brand editBrand(Brand brand);
 	Iterable<Brand> getAll();
+	Brand findById(int id);
 
 }

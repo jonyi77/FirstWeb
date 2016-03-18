@@ -16,7 +16,7 @@ public class Season {
 	private int id;
 	private String name;
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="season")
-	private List<Specification> specification;
+	private List<Article> article;
 
 	public Season() {
 
@@ -38,12 +38,12 @@ public class Season {
 		this.name = name;
 	}
 
-	public List<Specification> getSpecification() {
-		return specification;
+	public List<Article> getArticle() {
+		return article;
 	}
 
-	public void setSpecification(List<Specification> specification) {
-		this.specification = specification;
+	public void setArticle(List<Article> article) {
+		this.article = article;
 	}
 
 }

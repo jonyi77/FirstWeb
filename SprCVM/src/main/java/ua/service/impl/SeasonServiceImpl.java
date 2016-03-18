@@ -40,5 +40,8 @@ public class SeasonServiceImpl implements SeasonService {
 	public Iterable<Season> getAll() {
 		return seasonRepository.findAll();
 	}
+	public Season findById(int id){
+		return seasonRepository.findOne(id);
+	}
 
 }

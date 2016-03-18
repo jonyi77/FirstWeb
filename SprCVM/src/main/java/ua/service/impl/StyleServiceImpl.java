@@ -40,5 +40,8 @@ public class StyleServiceImpl implements StyleService {
 	public Iterable<Style> getAll() {
 		return styleRepository.findAll();
 	}
+	public Style findById(int id){
+		return styleRepository.findOne(id);
+	}
 
 }

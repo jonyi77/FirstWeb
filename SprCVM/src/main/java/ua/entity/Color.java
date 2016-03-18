@@ -17,7 +17,7 @@ public class Color {
 	private int id;
 	private String name;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "color")
-	private List<Specification> specification;
+	private List<Article> article;
 
 	public Color() {
 
@@ -39,12 +39,12 @@ public class Color {
 		this.name = name;
 	}
 
-	public List<Specification> getSpecification() {
-		return specification;
+	public List<Article> getArticle() {
+		return article;
 	}
 
-	public void setSpecification(List<Specification> specification) {
-		this.specification = specification;
+	public void setArticle(List<Article> article) {
+		this.article = article;
 	}
 
 }

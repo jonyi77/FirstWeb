@@ -42,5 +42,8 @@ public class ColorServiceImpl implements ColorService {
 	public Iterable<Color> getAll() {
 		return colorRepository.findAll();
 	}
+	public Color findById(int id){
+		return colorRepository.findOne(id);
+	}
 
 }

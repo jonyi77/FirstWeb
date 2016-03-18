@@ -40,5 +40,8 @@ public class CategoryServiceImpl implements CategoryService {
 	public Iterable<Category> getAll() {
 		return categoryRepository.findAll();
 	}
+	public Category findById(int id){
+		return categoryRepository.findOne(id);
+	}
 
 }

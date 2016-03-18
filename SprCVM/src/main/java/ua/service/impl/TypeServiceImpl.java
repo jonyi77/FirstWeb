@@ -40,5 +40,8 @@ public class TypeServiceImpl implements TypeService {
 	public Iterable<Type> getAll() {
 		return typeRepository.findAll();
 	}
+	public Type findById(int id){
+		return typeRepository.findOne(id);
+	}
 
 }

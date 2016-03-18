@@ -19,6 +19,8 @@
 		<li><a href="season"> Посилання на сезон</a></li>
 		<li><a href="style"> Посилання на стиль</a></li>
 		<li><a href="type"> Посилання на тип</a></li>
+		<li><a href="article"> Посилання на товар</a></li>
+		<li><a href="size"> Посилання на розмір</a></li>
 	</ul>
 	<form method="post">
 		<table>
