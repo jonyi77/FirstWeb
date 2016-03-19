@@ -12,6 +12,7 @@
 <body>
 	<h2>Hello</h2>
 	<ul>
+		<li><a href="article"> Посилання на товар</a></li>
 		<li><a href="country"> Посилання на країну</a></li>
 		<li><a href="color"> Посилання на колір</a></li>
 		<li><a href="brand"> Посилання на бренд</a></li>
@@ -19,8 +20,9 @@
 		<li><a href="season"> Посилання на сезон</a></li>
 		<li><a href="style"> Посилання на стиль</a></li>
 		<li><a href="type"> Посилання на тип</a></li>
-		<li><a href="article"> Посилання на товар</a></li>
 		<li><a href="size"> Посилання на розмір</a></li>
+		<li><a href="registration"> Посилання на реєстрацію</a></li>
+		<li><a href="login"> Посилання на login</a></li>
 	</ul>
 	<form method="post">
 		<table>
