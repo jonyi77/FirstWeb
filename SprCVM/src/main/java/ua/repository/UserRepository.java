@@ -9,9 +9,9 @@ import ua.entity.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
 	
 	@Query("select u from User u where u.login = :login")
-	User findByLogin(@Param("login") String login);
+	User findByLogin(@Param("login")String login);
 	
 	@Query("select u from User u where u.email = :email")
-	User findByEmail(@Param("email") String email);
+	User findByEmail(@Param("email")String email);
 
 }

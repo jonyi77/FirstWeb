@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div class = "registr">
-		<form action="/login" method="post">
+		<form action="?${_csrf.parameterName}=${_csrf.token}" method="post">
 			<label>Введіть логін</label>
 			<input name="username"><br><br>
 			<label>Введіть пароль</label>

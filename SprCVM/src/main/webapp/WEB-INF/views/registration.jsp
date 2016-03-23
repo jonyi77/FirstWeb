@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div class="registr">
-	<form method="post">
+	<form method="post" action="?${_csrf.parameterName}=${_csrf.token}">
 		<table>
 			<tr>
 				<td>Введіть своє ім'я</td>
@@ -38,7 +38,7 @@
 			</tr>
 			<tr>
 				<td>Введіть пароль користувача</td>
-				<td><input type="password" name="password"></td>
+				<td><input name="password"></td>
 			</tr>	
 		</table>
 		<br><input type="submit" value="Реєстрація">

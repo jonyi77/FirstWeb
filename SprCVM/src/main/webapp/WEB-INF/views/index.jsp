@@ -24,7 +24,7 @@
 		<li><a href="registration"> Посилання на реєстрацію</a></li>
 		<li><a href="login"> Посилання на login</a></li>
 	</ul>
-	<form method="post">
+	<form method="post" action="?${_csrf.parameterName}=${_csrf.token}">
 		<table>
 			<tr>
 				<th>Age:</th>

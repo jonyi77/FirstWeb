@@ -11,7 +11,7 @@
 	<a href="/SprCVM">На головну</a>
 	<br>
 	<br>
-	<form method="post">
+	<form method="post" action="${_csrf.parameterName}=${_csrf.token}">
 		<input name="name"> <input type="submit" value="Ok">
 	</form>
 	<table>
