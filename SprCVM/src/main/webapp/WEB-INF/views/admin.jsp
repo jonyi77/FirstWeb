@@ -18,8 +18,6 @@
 		<li><a href="style"> Посилання на стиль</a></li>
 		<li><a href="type"> Посилання на тип</a></li>
 		<li><a href="size"> Посилання на розмір</a></li>
-		<li><a href="registration"> Посилання на реєстрацію</a></li>
-		<li><a href="login"> Посилання на login</a></li>
 	</ul>
 
 </body>

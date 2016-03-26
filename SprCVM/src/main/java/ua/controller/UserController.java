@@ -25,7 +25,7 @@ public class UserController {
 	@RequestMapping(value="/registration", method=RequestMethod.POST)
 	public String save(@RequestParam String name, String login, String phone, String email, String password){
 		userServiceImpl.save(name, login, phone, email, password);
-		return "redirect:/registration";
+		return "redirect:/";
 	}
 
 }

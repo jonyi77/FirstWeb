@@ -23,6 +23,7 @@
 			<input name="username"><br><br>
 			<label>Введіть пароль</label>
 			<input type="password" name="password"><br><br>
+			<input type="button" value="Реєстрація" onclick="parent.location='registration'">
 			<input type="submit" value="Вхід">
 		</form>
 	</div>

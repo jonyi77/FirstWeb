@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- Description of template web page that will have 3 attributes: header, footer 
+		and main content (body) -->
+	<!-- Опис шаблонної веб сторінки, на якій буде 3 параметри: хедер, футер 
+		і головний контент -->
+	<definition name="base.definition" template="/WEB-INF/views/tiles/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp"></put-attribute>
+		<!-- Here body must be empty, values will come in child definitions -->
+		<!-- Задаєм пустим, значення будуть приходити в наступних definition -->
+		<put-attribute name="body" value=""></put-attribute> 
+	</definition>
+	<!-- створюємо ще один definition який буде відображати tiles на сторінці admin -->
+	<definition name="admin.definition" template="/WEB-INF/views/tiles/admin/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/admin/header.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/admin/footer.jsp"></put-attribute>
+		<!-- Here body must be empty, values will come in child definitions -->
+		<!-- Задаєм пустим, значення будуть приходити в наступних definition -->
+		<put-attribute name="body" value=""></put-attribute> 
+	</definition>
+	<definition name="index" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/index.jsp"></put-attribute>
+		<put-attribute name="title" value="My Site Start"></put-attribute>
+	</definition>
+	<definition name="country" extends="admin.definition">
+		<put-attribute name="body" value="/WEB-INF/views/country.jsp"></put-attribute>
+		<put-attribute name="title" value="Country"></put-attribute>
+	</definition>
+	<definition name="login" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/login.jsp"></put-attribute>
+		<put-attribute name="title" value="Login"></put-attribute>
+	</definition>
+	<definition name="admin" extends="admin.definition">
+		<put-attribute name="body" value="/WEB-INF/views/admin.jsp"></put-attribute>
+		<put-attribute name="title" value="Administration"></put-attribute>
+	</definition>
+	<definition name="article" extends="admin.definition">
+		<put-attribute name="body" value="/WEB-INF/views/article.jsp"></put-attribute>
+		<put-attribute name="title" value="Article"></put-attribute>
+	</definition>
+	<definition name="brand" extends="admin.definition">
+		<put-attribute name="body" value="/WEB-INF/views/brand.jsp"></put-attribute>
+		<put-attribute name="title" value="Article"></put-attribute>
+	</definition>
+	<definition name="category" extends="admin.definition">
+		<put-attribute name="body" value="/WEB-INF/views/category.jsp"></put-attribute>
+		<put-attribute name="title" value="Category"></put-attribute>
+	</definition>
+	<definition name="color" extends="admin.definition">
+		<put-attribute name="body" value="/WEB-INF/views/color.jsp"></put-attribute>
+		<put-attribute name="title" value="Color"></put-attribute>
+	</definition>
+	<definition name="registration" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/registration.jsp"></put-attribute>
+		<put-attribute name="title" value="Registration"></put-attribute>
+	</definition>
+	<definition name="season" extends="admin.definition">
+		<put-attribute name="body" value="/WEB-INF/views/season.jsp"></put-attribute>
+		<put-attribute name="title" value="Season"></put-attribute>
+	</definition>
+	<definition name="size" extends="admin.definition">
+		<put-attribute name="body" value="/WEB-INF/views/size.jsp"></put-attribute>
+		<put-attribute name="title" value="Category"></put-attribute>
+	</definition>
+	<definition name="style" extends="admin.definition">
+		<put-attribute name="body" value="/WEB-INF/views/style.jsp"></put-attribute>
+		<put-attribute name="title" value="Style"></put-attribute>
+	</definition>
+	<definition name="type" extends="admin.definition">
+		<put-attribute name="body" value="/WEB-INF/views/type.jsp"></put-attribute>
+		<put-attribute name="title" value="Type"></put-attribute>
+	</definition>
+</tiles-definitions>

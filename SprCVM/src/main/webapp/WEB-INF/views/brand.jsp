@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/SprCVM">На головну</a>
+	<a href="/SprCVM/admin">На головну</a>
 	<br>
 	<br>
 	<form method="post" action="${_csrf.parameterName}=${_csrf.token}">
