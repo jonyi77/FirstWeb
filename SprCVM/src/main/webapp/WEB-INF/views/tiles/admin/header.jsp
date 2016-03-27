@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<%@ page session="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -59,7 +58,10 @@ div.header_right>a {
 			</ul>
 		</div>
 		<div class="header_right">
-			<a href="#">admin</a> <a href="<c:url value="/j_spring_security_logout"/>">Вийти</a>
+			<a href="#">admin</a>
+			<sec:authorize access="isAuthenticated()">
+				<a href="<c:url value="/logout"/>">Вийти</a>
+			</sec:authorize>
 		</div>
 	</div>
 </body>

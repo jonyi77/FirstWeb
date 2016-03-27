@@ -6,12 +6,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	table{
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-top: 30px;
+	}
+	td{
+	border: 1px solid black;
+	padding-left: 10px;
+	padding-right: 10px;
+	}
+	th{
+	border: 1px solid black;
+	padding-left: 10px;
+	padding-right: 10px;
+	}
+</style>
 </head>
 <body>
 	<a href="/SprCVM/admin">На головну</a>
 	<br>
 	<br>
-	<form method="post" action="${_csrf.parameterName}=${_csrf.token}">
+	<form method="post" action="?${_csrf.parameterName}=${_csrf.token}">
 		<table>
 			<tr>
 				<td>Виберіть країну</td>
@@ -90,7 +107,7 @@
 				<td><input name="top"></td>
 			</tr>
 		</table>
-		<input type="submit" value="Ok">
+		<input type="submit" value="Додати">
 		<br>
 		<br>
 		<br>

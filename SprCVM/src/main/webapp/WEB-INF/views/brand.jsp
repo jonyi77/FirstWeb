@@ -6,20 +6,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	table{
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-top: 30px;
+	}
+	td{
+	border: 1px solid black;
+	padding-left: 10px;
+	padding-right: 10px;
+	}
+
+</style>
 </head>
 <body>
 	<a href="/SprCVM/admin">На головну</a>
 	<br>
 	<br>
-	<form method="post" action="${_csrf.parameterName}=${_csrf.token}">
+	<form method="post" action="?${_csrf.parameterName}=${_csrf.token}">
 		<input name="name">
-		<input type="submit" value="Ok">
+		<input type="submit" value="Додати">
 	</form>
 	<table>
 		<c:forEach var="brand" items="${brands}">
 			<tr>
 				<td>${brand.name}</td>
 				<td><c:url value="/brand/${brand.id}" var="url"/><a href="${url}">delete</a></td>
+				<td><a href="#">edit</a></td>
 			</tr>
 		
 		</c:forEach>
