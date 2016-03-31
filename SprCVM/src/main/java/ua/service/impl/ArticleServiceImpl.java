@@ -59,5 +59,11 @@ public class ArticleServiceImpl implements ArticleService {
 	public Iterable<Article> getAll() {
 		return articleRepository.findAll();
 	}
+	
+	public Article findById(String id){
+		int parseId = Integer.parseInt(id);
+		return articleRepository.findOne(parseId);
+		
+	}
 
 }

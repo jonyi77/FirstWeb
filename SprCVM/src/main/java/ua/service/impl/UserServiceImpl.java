@@ -19,6 +19,12 @@ public class UserServiceImpl {
 		return userRepository.findOne(id);
 	}
 	
+	public void saveUser(User user){
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		user.setRole(Role.ROLE_USER);
+		userRepository.save(user);
+	}
+	
 	public void save(String name, String login, String phone, String email, String password){
 		User user = new User();
 		user.setName(name);

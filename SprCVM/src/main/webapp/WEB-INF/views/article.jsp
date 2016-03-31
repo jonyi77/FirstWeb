@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,7 +29,7 @@
 	<a href="/SprCVM/admin">На головну</a>
 	<br>
 	<br>
-	<form method="post" action="?${_csrf.parameterName}=${_csrf.token}">
+<!-- 	<form method="post" action="?${_csrf.parameterName}=${_csrf.token}">
 		<table>
 			<tr>
 				<td>Виберіть країну</td>
@@ -113,6 +114,77 @@
 		<br>
 
 	</form>
+-->
+
+	<c:url value="/article" var="url"/>
+	<sf:form method="POST" modelAttribute="article" action="${url}">
+	<table>
+		<tr>
+			<td>Введіть імя</td>
+			<td><sf:input path="name"/></td>
+		</tr>
+		<tr>
+			<td>Введіть ціну</td>
+			<td><sf:input path="price"/></td>
+		</tr>
+		<tr>
+			<td>Введіть тип матеріалу</td>
+			<td><sf:input path="top"/></td>
+		</tr>
+
+		<tr>
+			<td>Виберіть країну</td>
+			<td><sf:select path="country">
+				<sf:options items="${countries}" itemValue="id" itemLabel="name"/>
+			</sf:select></td>
+		</tr>
+		<tr>
+			<td>Виберіть категорію</td>
+			<td><sf:select path="category">
+				<sf:options items="${categories}" itemValue="id" itemLabel="name"/>
+			</sf:select></td>
+		</tr>
+		<tr>
+			<td>Виберіть бренд</td>
+			<td><sf:select path="brand">
+				<sf:options items="${brands}" itemValue="id" itemLabel="name"/>
+			</sf:select></td>
+		</tr>
+		<tr>
+			<td>Виберіть колір</td>
+			<td><sf:select path="color">
+				<sf:options items="${colors}" itemValue="id" itemLabel="name"/>
+			</sf:select></td>
+		</tr>
+		<tr>
+			<td>Виберіть сезон</td>
+			<td><sf:select path="season">
+				<sf:options items="${seasons}" itemValue="id" itemLabel="name"/>
+			</sf:select></td>
+		</tr>
+		<tr>
+			<td>Виберіть стиль</td>
+			<td><sf:select path="style">
+				<sf:options items="${styles}" itemValue="id" itemLabel="name"/>
+			</sf:select></td>
+		</tr>
+		<tr>
+			<td>Виберіть тип</td>
+			<td><sf:select path="type">
+				<sf:options items="${types}" itemValue="id" itemLabel="name"/>
+			</sf:select></td>
+		</tr>
+		<tr>
+			<td>Виберіть розмір</td>
+			<td><sf:select path="size">
+				<sf:options items="${sizes}" itemValue="id" itemLabel="name"/>
+			</sf:select></td>
+		</tr>
+	
+	</table>
+	<input type="submit" value="Add">
+	</sf:form>
+
 	<table>
 		<tr>
 			<th>Назва товару</th>
