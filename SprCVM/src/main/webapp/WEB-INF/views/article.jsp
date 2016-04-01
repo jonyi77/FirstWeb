@@ -116,7 +116,7 @@
 	</form>
 -->
 
-	<c:url value="/article" var="url"/>
+	<c:url value="/admin/article" var="url"/>
 	<sf:form method="POST" modelAttribute="article" action="${url}">
 	<sf:input path="id" type="hidden"/>
 	<table>
@@ -213,9 +213,9 @@
 				<td>${article.size.name}</td>
 				<td>${article.price}</td>
 				<td>${article.top}</td>
-				<td><c:url value="/article/${article.id}" var="url" /><a
+				<td><c:url value="/admin/article/${article.id}" var="url" /><a
 					href="${url}">delete</a></td>
-				<td><c:url value="/article/edit/${article.id}" var="url" /><a
+				<td><c:url value="/admin/article/edit/${article.id}" var="url" /><a
 					href="${url}">edit</a></td>
 			</tr>
 

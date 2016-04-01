@@ -1,5 +1,7 @@
 package ua.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +17,12 @@ import ua.entity.Brand;
 import ua.entity.Category;
 import ua.entity.Color;
 import ua.entity.Country;
+import ua.entity.Role;
 import ua.entity.Season;
 import ua.entity.Size;
 import ua.entity.Style;
 import ua.entity.Type;
+import ua.entity.User;
 import ua.service.binder.BrandEditor;
 import ua.service.binder.CategoryEditor;
 import ua.service.binder.ColorEditor;
@@ -36,6 +40,7 @@ import ua.service.impl.SeasonServiceImpl;
 import ua.service.impl.SizeServiceImpl;
 import ua.service.impl.StyleServiceImpl;
 import ua.service.impl.TypeServiceImpl;
+import ua.service.impl.UserServiceImpl;
 
 @Controller
 public class ArticleController {
@@ -57,9 +62,11 @@ public class ArticleController {
 	private SizeServiceImpl sizeServiceImpl;
 	@Autowired
 	private ArticleServiceImpl articleServiceImpl;
-	
+	@Autowired
+	private UserServiceImpl userServiceImpl;
+
 	@InitBinder
-	protected void initBinderCountry(WebDataBinder binder){
+	protected void initBinderCountry(WebDataBinder binder) {
 		binder.registerCustomEditor(Country.class, new CountryEditor(countryServiceImpl));
 		binder.registerCustomEditor(Category.class, new CategoryEditor(categoryServiceImpl));
 		binder.registerCustomEditor(Brand.class, new BrandEditor(brandServiceImpl));
@@ -70,47 +77,64 @@ public class ArticleController {
 		binder.registerCustomEditor(Size.class, new SizeEditor(sizeServiceImpl));
 	}
 
-	
-	@RequestMapping("/article")
-	public String articleView(Model model){
-		model.addAttribute("countries", countryServiceImpl.getAll());
-		model.addAttribute("categories", categoryServiceImpl.getAll());
-		model.addAttribute("brands", brandServiceImpl.getAll());
-		model.addAttribute("colors", colorServiceImpl.getAll());
-		model.addAttribute("seasons", seasonServiceImpl.getAll());
-		model.addAttribute("styles", styleServiceImpl.getAll());
-		model.addAttribute("types", typeServiceImpl.getAll());
-		model.addAttribute("sizes", sizeServiceImpl.getAll());
-		model.addAttribute("articles", articleServiceImpl.getAll());
-		
-		model.addAttribute("article", new Article());
+	@RequestMapping("/admin/article")
+	public String articleView(Model model, Principal principal) {
+		if (principal != null) {
+			User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
+			if (Role.ROLE_ADMIN == user.getRole()) {
+				model.addAttribute("user", user);
 
-		return "article";
+				model.addAttribute("countries", countryServiceImpl.getAll());
+				model.addAttribute("categories", categoryServiceImpl.getAll());
+				model.addAttribute("brands", brandServiceImpl.getAll());
+				model.addAttribute("colors", colorServiceImpl.getAll());
+				model.addAttribute("seasons", seasonServiceImpl.getAll());
+				model.addAttribute("styles", styleServiceImpl.getAll());
+				model.addAttribute("types", typeServiceImpl.getAll());
+				model.addAttribute("sizes", sizeServiceImpl.getAll());
+				model.addAttribute("articles", articleServiceImpl.getAll());
+
+				model.addAttribute("article", new Article());
+
+				return "article";
+			} else {
+				return "redirect:/";
+			}
+		} else {
+			return "redirect:/";
+		}
 	}
-	
-	@RequestMapping(value = "/article", method = RequestMethod.POST)
-	public String save(@ModelAttribute Article article){
+
+	@RequestMapping(value = "/admin/article", method = RequestMethod.POST)
+	public String save(@ModelAttribute Article article) {
 		articleServiceImpl.editArticle(article);
-		return "redirect:/article";
+		return "redirect:/admin/article";
 	}
-	
-//	@RequestMapping(value="/article", method=RequestMethod.POST)
-//	public String save(@RequestParam String name, int typeId, int sizeId, double price, int seasonId,
-//			int categoryId, int countryId, int styleId, int colorId, String top, int brandId){
-//		articleServiceImpl.save(name, typeServiceImpl.findById(typeId), sizeServiceImpl.findById(sizeId), 
-//				price, seasonServiceImpl.findById(seasonId), categoryServiceImpl.findById(categoryId), 
-//				countryServiceImpl.findById(countryId), styleServiceImpl.findById(styleId), colorServiceImpl.findById(colorId), top,
-//				brandServiceImpl.findById(brandId));
-//		return "redirect:/article";
-//	}
-	
-	@RequestMapping("/article/{id}")
-	public String delete(@PathVariable String id){
+
+	// @RequestMapping(value="/article", method=RequestMethod.POST)
+	// public String save(@RequestParam String name, int typeId, int sizeId,
+	// double price, int seasonId,
+	// int categoryId, int countryId, int styleId, int colorId, String top, int
+	// brandId){
+	// articleServiceImpl.save(name, typeServiceImpl.findById(typeId),
+	// sizeServiceImpl.findById(sizeId),
+	// price, seasonServiceImpl.findById(seasonId),
+	// categoryServiceImpl.findById(categoryId),
+	// countryServiceImpl.findById(countryId),
+	// styleServiceImpl.findById(styleId), colorServiceImpl.findById(colorId),
+	// top,
+	// brandServiceImpl.findById(brandId));
+	// return "redirect:/article";
+	// }
+
+	@RequestMapping("/admin/article/{id}")
+	public String delete(@PathVariable String id) {
 		articleServiceImpl.delete(id);
-		return "redirect:/article";
+		return "redirect:/admin/article";
 	}
-	@RequestMapping("/article/edit/{id}")
-	public String edit(@PathVariable String id, Model model){
+
+	@RequestMapping("/admin/article/edit/{id}")
+	public String edit(@PathVariable String id, Model model) {
 		model.addAttribute("article", articleServiceImpl.findById(id));
 		model.addAttribute("countries", countryServiceImpl.getAll());
 		model.addAttribute("categories", categoryServiceImpl.getAll());
@@ -120,7 +144,7 @@ public class ArticleController {
 		model.addAttribute("styles", styleServiceImpl.getAll());
 		model.addAttribute("types", typeServiceImpl.getAll());
 		model.addAttribute("sizes", sizeServiceImpl.getAll());
-		
+
 		return "article";
 	}
 

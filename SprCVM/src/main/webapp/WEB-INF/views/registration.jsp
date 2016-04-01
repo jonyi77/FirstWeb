@@ -51,22 +51,27 @@
 			<tr>
 				<td>Введіть своє ім'я</td>
 				<td><sf:input path="name"/></td>
+				<td><sf:errors path="name"/></td>
 			</tr>
 			<tr>
 				<td>Введіть логін користувача</td>
 				<td><sf:input path="login"/></td>
+				<td><sf:errors path="login"/></td>
 			</tr>
 			<tr>
 				<td>Введіть контактний телефон</td>
 				<td><sf:input path="phone"/></td>
+				<td><sf:errors path="phone"/></td>
 			</tr>
 			<tr>
 				<td>Введіть Email</td>
 				<td><sf:input path="email"/></td>
+				<td><sf:errors path="email"/></td>
 			</tr>
 			<tr>
 				<td>Введіть пароль користувача</td>
 				<td><sf:input path="password"/></td>
+				<td><sf:errors path="password"/></td>
 			</tr>
 			
 		</table>

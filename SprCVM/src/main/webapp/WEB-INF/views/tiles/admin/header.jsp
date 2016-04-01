@@ -46,20 +46,21 @@ div.header_right>a {
 	<div class="header">
 		<div class="header_left">
 			<ul class="header_left_menu">
-				<li><a href="article">Товар</a></li>
+				<li><a href="/SprCVM/admin/article">Товар</a></li>
 				<li><a href="country">Країна</a></li>
 				<li><a href="color">Колір</a></li>
 				<li><a href="brand">Бренд</a></li>
 				<li><a href="category">Категорія</a></li>
 				<li><a href="season">Сезон</a></li>
 				<li><a href="style">Стиль</a></li>
-				<li><a href="type">Тип</a></li>
+				<li><a href="/SprCVM/admin/type">Тип</a></li>
 				<li><a href="size">Розмір</a></li>
 			</ul>
 		</div>
 		<div class="header_right">
-			<a href="#">admin</a>
+			
 			<sec:authorize access="isAuthenticated()">
+				<a href="#">${user.login}</a>
 				<a href="<c:url value="/logout"/>">Вийти</a>
 			</sec:authorize>
 		</div>

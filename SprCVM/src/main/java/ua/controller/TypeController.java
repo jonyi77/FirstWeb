@@ -25,23 +25,23 @@ public class TypeController {
 		binder.registerCustomEditor(Type.class, new TypeEditor(typeServiceImpl));
 	}
 	
-	@RequestMapping("/type")
+	@RequestMapping("/admin/type")
 	public String typeView(Model model){
 		model.addAttribute("types", typeServiceImpl.getAll());
 		model.addAttribute("type", new Type());
 		return "type";
 	}
-	@RequestMapping(value="/type", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/type", method=RequestMethod.POST)
 	public String save(@ModelAttribute Type type){
 		typeServiceImpl.editType(type);
-		return "redirect:/type";
+		return "redirect:/admin/type";
 	}
-	@RequestMapping("/type/{id}")
+	@RequestMapping("/admin/type/{id}")
 	public String delete(@PathVariable String id){
 		typeServiceImpl.delete(id);
-		return "redirect:/type";
+		return "redirect:/admin/type";
 	}
-	@RequestMapping("/type/edit/{id}")
+	@RequestMapping("/admin/type/edit/{id}")
 	public String edit(@PathVariable String id, Model model){
 		model.addAttribute("type", typeServiceImpl.findById(Integer.parseInt(id)));
 		return "type";

@@ -30,7 +30,7 @@
 		<input type="submit" value="Ok">
 	</form>
 -->
-	<c:url value="/type" var="url"/>
+	<c:url value="/admin/type" var="url"/>
 	<sf:form method="POST" modelAttribute="type" action="${url}">
 		<sf:input path="id" type="hidden"/>
 		<sf:input path="name"/>
@@ -40,8 +40,8 @@
 		<c:forEach var="type" items="${types}">
 			<tr>
 				<td>${type.name}</td>
-				<td><c:url value="/type/${type.id}" var="url"/><a href="${url}">delete</a></td>
-				<td><c:url value="/type/edit/${type.id}" var="url"/><a href="${url}">edit</a></td>
+				<td><c:url value="/admin/type/${type.id}" var="url"/><a href="${url}">delete</a></td>
+				<td><c:url value="/admin/type/edit/${type.id}" var="url"/><a href="${url}">edit</a></td>
 			</tr>
 		</c:forEach>
 	</table>
