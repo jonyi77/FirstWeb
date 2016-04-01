@@ -44,7 +44,7 @@
 	</definition>
 	<definition name="brand" extends="admin.definition">
 		<put-attribute name="body" value="/WEB-INF/views/brand.jsp"></put-attribute>
-		<put-attribute name="title" value="Article"></put-attribute>
+		<put-attribute name="title" value="Brand"></put-attribute>
 	</definition>
 	<definition name="category" extends="admin.definition">
 		<put-attribute name="body" value="/WEB-INF/views/category.jsp"></put-attribute>

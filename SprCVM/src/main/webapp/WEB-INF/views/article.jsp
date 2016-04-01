@@ -118,6 +118,7 @@
 
 	<c:url value="/article" var="url"/>
 	<sf:form method="POST" modelAttribute="article" action="${url}">
+	<sf:input path="id" type="hidden"/>
 	<table>
 		<tr>
 			<td>Введіть імя</td>
@@ -214,6 +215,8 @@
 				<td>${article.top}</td>
 				<td><c:url value="/article/${article.id}" var="url" /><a
 					href="${url}">delete</a></td>
+				<td><c:url value="/article/edit/${article.id}" var="url" /><a
+					href="${url}">edit</a></td>
 			</tr>
 
 		</c:forEach>

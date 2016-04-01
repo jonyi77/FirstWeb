@@ -32,7 +32,7 @@ public class TypeServiceImpl implements TypeService {
 		return typeRepository.findByName(name);
 	}
 
-	public Type editName(Type type) {
+	public Type editType(Type type) {
 		Type saveType = typeRepository.save(type);
 		return saveType;
 	}

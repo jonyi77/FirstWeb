@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import ua.entity.Article;
 import ua.entity.Brand;
@@ -109,6 +108,20 @@ public class ArticleController {
 	public String delete(@PathVariable String id){
 		articleServiceImpl.delete(id);
 		return "redirect:/article";
+	}
+	@RequestMapping("/article/edit/{id}")
+	public String edit(@PathVariable String id, Model model){
+		model.addAttribute("article", articleServiceImpl.findById(id));
+		model.addAttribute("countries", countryServiceImpl.getAll());
+		model.addAttribute("categories", categoryServiceImpl.getAll());
+		model.addAttribute("brands", brandServiceImpl.getAll());
+		model.addAttribute("colors", colorServiceImpl.getAll());
+		model.addAttribute("seasons", seasonServiceImpl.getAll());
+		model.addAttribute("styles", styleServiceImpl.getAll());
+		model.addAttribute("types", typeServiceImpl.getAll());
+		model.addAttribute("sizes", sizeServiceImpl.getAll());
+		
+		return "article";
 	}
 
 }
