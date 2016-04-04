@@ -5,9 +5,12 @@
            http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security.xsd">
-    <http use-expressions="true">
+    <http auto-config="true" use-expressions="true">
+    	
         <form-login login-page="/" login-processing-url="/login" authentication-failure-url="/?authfail=true" default-target-url="/admin"/>
         <logout logout-url="/logout" logout-success-url="/"/>
+        <!-- додає можливість переглядати сторінку адміністратора користувачам з роллю ROLE_ADMIN -->
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
     </http>
     <beans:bean id="encoder"
         class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></beans:bean>

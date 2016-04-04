@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-	<a href="/SprCVM/admin">На головну</a>
+	<a href="/admin">На головну</a>
 	<br>
 	<br>
 <!--
@@ -30,7 +30,7 @@
 		<input type="submit" value="Ok">
 	</form>
 -->
-	<c:url value="/season" var="url"/>
+	<c:url value="/admin/season" var="url"/>
 	<sf:form method="POST" modelAttribute="season" action="${url}">
 		<sf:input path="id" type="hidden"/>
 		<sf:input path="name"/>
@@ -40,8 +40,8 @@
 		<c:forEach var="season" items="${seasons}">
 			<tr>
 				<td>${season.name}</td>
-				<td><c:url value="/season/${season.id}" var="url"/><a href="${url}">delete</a></td>
-				<td><c:url value="/season/edit/${season.id}" var="url"/><a href="${url}">edit</a></td>
+				<td><c:url value="/admin/season/${season.id}" var="url"/><a href="${url}">delete</a></td>
+				<td><c:url value="/admin/season/edit/${season.id}" var="url"/><a href="${url}">edit</a></td>
 			</tr>
 		
 		</c:forEach>

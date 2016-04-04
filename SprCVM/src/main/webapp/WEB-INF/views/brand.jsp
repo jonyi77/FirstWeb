@@ -22,7 +22,7 @@
 </style>
 </head>
 <body>
-	<a href="/SprCVM/admin">На головну</a>
+	<a href="/admin">На головну</a>
 	<br>
 	<br>
 <!-- 	<form method="post" action="?${_csrf.parameterName}=${_csrf.token}">
@@ -30,7 +30,7 @@
 		<input type="submit" value="Додати">
 		</form>
  -->
-	<c:url value="/brand" var="url"/>
+	<c:url value="/admin/brand" var="url"/>
 	<sf:form method="POST" modelAttribute="brand" action="${url}">
 		<sf:input path="id" type="hidden"/>
 		<sf:input path="name"/>
@@ -40,8 +40,8 @@
 		<c:forEach var="brand" items="${brands}">
 			<tr>
 				<td>${brand.name}</td>
-				<td><c:url value="/brand/${brand.id}" var="url"/><a href="${url}">delete</a></td>
-				<td><c:url value="/brand/edit/${brand.id}" var="url"/><a href="${url}">edit</a></td>
+				<td><c:url value="/admin/brand/${brand.id}" var="url"/><a href="${url}">delete</a></td>
+				<td><c:url value="/admin/brand/edit/${brand.id}" var="url"/><a href="${url}">edit</a></td>
 			</tr>
 		
 		</c:forEach>

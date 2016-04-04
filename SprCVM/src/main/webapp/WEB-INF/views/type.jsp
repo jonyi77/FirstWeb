@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-	<a href="/SprCVM/admin">На головну</a>
+	<a href="/admin">На головну</a>
 	<br>
 	<br>
 <!--

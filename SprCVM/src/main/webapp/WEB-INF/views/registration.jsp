@@ -8,14 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.registr {
-	width:385px;
-	padding: 20px;
-	border: solid 1px black;
-	text-align: center;
+	fieldset {
 	margin: auto;
-	margin-top: 90px;
+	margin-top:5%;
+	width: 35%;
 	}
+
 </style>
 </head>
 <body>
@@ -47,35 +45,37 @@
 	</form>
 -->
 	<sf:form method="POST" modelAttribute="user">
+	<fieldset>
 		<table>
 			<tr>
 				<td>Введіть своє ім'я</td>
 				<td><sf:input path="name"/></td>
-				<td><sf:errors path="name"/></td>
+				<td style="color: red"><sf:errors path="name"/></td>
 			</tr>
 			<tr>
 				<td>Введіть логін користувача</td>
 				<td><sf:input path="login"/></td>
-				<td><sf:errors path="login"/></td>
+				<td style="color: red"><sf:errors path="login"/></td>
 			</tr>
 			<tr>
 				<td>Введіть контактний телефон</td>
 				<td><sf:input path="phone"/></td>
-				<td><sf:errors path="phone"/></td>
+				<td style="color: red"><sf:errors path="phone"/></td>
 			</tr>
 			<tr>
 				<td>Введіть Email</td>
 				<td><sf:input path="email"/></td>
-				<td><sf:errors path="email"/></td>
+				<td style="color: red"><sf:errors path="email"/></td>
 			</tr>
 			<tr>
 				<td>Введіть пароль користувача</td>
 				<td><sf:input path="password"/></td>
-				<td><sf:errors path="password"/></td>
+				<td style="color: red"><sf:errors path="password"/></td>
 			</tr>
 			
 		</table>
 		<br><input type="submit" value="Реєстрація">
+	</fieldset>
 	</sf:form>
 	</div>
 

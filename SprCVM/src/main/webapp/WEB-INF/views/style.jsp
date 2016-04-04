@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-	<a href="/SprCVM/admin">На головну</a>
+	<a href="/admin">На головну</a>
 	<br>
 	<br>
 <!--
@@ -29,7 +29,7 @@
 		<input name="name"> <input type="submit" value="Ok">
 	</form>
 -->
-	<c:url value="/style" var="url"/>
+	<c:url value="/admin/style" var="url"/>
 	<sf:form method="POST" modelAttribute="style" action="${url}">
 		<sf:input path="id" type="hidden"/>
 		<sf:input path="name"/>
@@ -40,8 +40,8 @@
 		<c:forEach var="style" items="${styles}">
 			<tr>
 				<td>${style.name}</td>
-				<td><c:url value="/style/${style.id}" var="url"/><a href="${url}">delete</a></td>
-				<td><c:url value="/style/edit/${style.id}" var="url"/><a href="${url}">edit</a></td>
+				<td><c:url value="/admin/style/${style.id}" var="url"/><a href="${url}">delete</a></td>
+				<td><c:url value="/admin/style/edit/${style.id}" var="url"/><a href="${url}">edit</a></td>
 			</tr>
 
 		</c:forEach>

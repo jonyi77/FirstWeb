@@ -10,6 +10,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
+import ua.service.impl.UserCheck;
+
 @Entity
 public class User {
 
@@ -17,7 +19,9 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Size(min=4, message="логін надто короткий")
+	@UserCheck(message = "даний логін вже існує")
 	private String login;
+	@Size(min=5, message="пароль надто короткий")
 	private String password;
 	@Enumerated(EnumType.ORDINAL)
 	private Role role;
