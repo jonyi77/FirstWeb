@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ua.entity.Role;
 import ua.entity.Season;
 import ua.entity.User;
 import ua.service.binder.SeasonEditor;
@@ -34,19 +33,13 @@ public class SeasonController {
 
 	@RequestMapping("/admin/season")
 	public String seasonView(Model model, Principal principal) {
-		if (principal != null) {
-			User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
-			if (Role.ROLE_ADMIN == user.getRole()) {
-				model.addAttribute("user", user);
-				model.addAttribute("seasons", seasonServiceImpl.getAll());
-				model.addAttribute("season", new Season());
-				return "season";
-			} else {
-				return "redirect:/";
-			}
-		} else {
-			return "redirect:/";
-		}
+		User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
+
+		model.addAttribute("user", user);
+		model.addAttribute("seasons", seasonServiceImpl.getAll());
+		model.addAttribute("season", new Season());
+		return "season";
+
 	}
 
 	// @RequestMapping(value="/season", method=RequestMethod.POST)

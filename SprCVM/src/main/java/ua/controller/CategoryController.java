@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ua.entity.Category;
-import ua.entity.Role;
 import ua.entity.User;
 import ua.service.binder.CategoryEditor;
 import ua.service.impl.CategoryServiceImpl;
@@ -34,19 +33,13 @@ public class CategoryController {
 
 	@RequestMapping("/admin/category")
 	public String categoryView(Model model, Principal principal) {
-		if (principal != null) {
-			User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
-			if (Role.ROLE_ADMIN == user.getRole()) {
-				model.addAttribute("user", user);
-				model.addAttribute("categories", categoryServiceImpl.getAll());
-				model.addAttribute("category", new Category());
-				return "category";
-			} else {
-				return "redirect:/";
-			}
-		} else {
-			return "redirect:/";
-		}
+		User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
+
+		model.addAttribute("user", user);
+		model.addAttribute("categories", categoryServiceImpl.getAll());
+		model.addAttribute("category", new Category());
+		return "category";
+
 	}
 
 	// @RequestMapping(value="/category", method=RequestMethod.POST)

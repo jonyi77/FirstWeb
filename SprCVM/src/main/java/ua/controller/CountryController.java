@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ua.entity.Country;
-import ua.entity.Role;
 import ua.entity.User;
 import ua.service.binder.CountryEditor;
 import ua.service.impl.CountryServiceImpl;
@@ -47,19 +46,13 @@ public class CountryController {
 
 	@RequestMapping("/admin/country")
 	public String countryView(Model model, Principal principal) {
-		if (principal != null) {
-			User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
-			if (Role.ROLE_ADMIN == user.getRole()) {
-				model.addAttribute("user", user);
-				model.addAttribute("countries", countryServiceImpl.getAll());
-				model.addAttribute("country", new Country());
-				return "country";
-			} else {
-				return "redirect:/";
-			}
-		} else {
-			return "redirect:/";
-		}
+		User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
+
+		model.addAttribute("user", user);
+		model.addAttribute("countries", countryServiceImpl.getAll());
+		model.addAttribute("country", new Country());
+		return "country";
+
 	}
 
 	@RequestMapping("/admin/country/{id}")

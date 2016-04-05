@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ua.entity.Role;
 import ua.entity.Size;
 import ua.entity.User;
 import ua.service.binder.SizeEditor;
@@ -34,19 +33,13 @@ public class SizeController {
 
 	@RequestMapping("/admin/size")
 	public String sizeView(Model model, Principal principal) {
-		if (principal != null) {
-			User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
-			if (Role.ROLE_ADMIN == user.getRole()) {
-				model.addAttribute("user", user);
-				model.addAttribute("sizes", sizeServiceImpl.getAll());
-				model.addAttribute("size", new Size());
-				return "size";
-			} else {
-				return "redirect:/";
-			}
-		} else {
-			return "redirect:/";
-		}
+		User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
+
+		model.addAttribute("user", user);
+		model.addAttribute("sizes", sizeServiceImpl.getAll());
+		model.addAttribute("size", new Size());
+		return "size";
+
 	}
 
 	// @RequestMapping(value="/size", method=RequestMethod.POST)

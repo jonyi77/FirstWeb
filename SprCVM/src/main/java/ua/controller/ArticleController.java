@@ -17,7 +17,6 @@ import ua.entity.Brand;
 import ua.entity.Category;
 import ua.entity.Color;
 import ua.entity.Country;
-import ua.entity.Role;
 import ua.entity.Season;
 import ua.entity.Size;
 import ua.entity.Style;
@@ -79,30 +78,23 @@ public class ArticleController {
 
 	@RequestMapping("/admin/article")
 	public String articleView(Model model, Principal principal) {
-		if (principal != null) {
-			User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
-			if (Role.ROLE_ADMIN == user.getRole()) {
-				model.addAttribute("user", user);
+		User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
+		model.addAttribute("user", user);
 
-				model.addAttribute("countries", countryServiceImpl.getAll());
-				model.addAttribute("categories", categoryServiceImpl.getAll());
-				model.addAttribute("brands", brandServiceImpl.getAll());
-				model.addAttribute("colors", colorServiceImpl.getAll());
-				model.addAttribute("seasons", seasonServiceImpl.getAll());
-				model.addAttribute("styles", styleServiceImpl.getAll());
-				model.addAttribute("types", typeServiceImpl.getAll());
-				model.addAttribute("sizes", sizeServiceImpl.getAll());
-				model.addAttribute("articles", articleServiceImpl.getAll());
+		model.addAttribute("countries", countryServiceImpl.getAll());
+		model.addAttribute("categories", categoryServiceImpl.getAll());
+		model.addAttribute("brands", brandServiceImpl.getAll());
+		model.addAttribute("colors", colorServiceImpl.getAll());
+		model.addAttribute("seasons", seasonServiceImpl.getAll());
+		model.addAttribute("styles", styleServiceImpl.getAll());
+		model.addAttribute("types", typeServiceImpl.getAll());
+		model.addAttribute("sizes", sizeServiceImpl.getAll());
+		model.addAttribute("articles", articleServiceImpl.getAll());
 
-				model.addAttribute("article", new Article());
+		model.addAttribute("article", new Article());
 
-				return "article";
-			} else {
-				return "redirect:/";
-			}
-		} else {
-			return "redirect:/";
-		}
+		return "article";
+
 	}
 
 	@RequestMapping(value = "/admin/article", method = RequestMethod.POST)

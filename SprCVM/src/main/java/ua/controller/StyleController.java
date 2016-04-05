@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ua.entity.Role;
 import ua.entity.Style;
 import ua.entity.User;
 import ua.service.binder.StyleEditor;
@@ -34,19 +33,14 @@ public class StyleController {
 
 	@RequestMapping("/admin/style")
 	public String styleView(Model model, Principal principal) {
-		if (principal != null) {
-			User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
-			if (Role.ROLE_ADMIN == user.getRole()) {
-				model.addAttribute("user", user);
-				model.addAttribute("styles", styleServiceImpl.getAll());
-				model.addAttribute("style", new Style());
-				return "style";
-			} else {
-				return "redirect:/";
-			}
-		} else {
-			return "redirect:/";
-		}
+
+		User user = userServiceImpl.findById(Integer.parseInt(principal.getName()));
+
+		model.addAttribute("user", user);
+		model.addAttribute("styles", styleServiceImpl.getAll());
+		model.addAttribute("style", new Style());
+		return "style";
+
 	}
 
 	@RequestMapping(value = "/admin/style", method = RequestMethod.POST)
