@@ -6,9 +6,16 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-    <mvc:annotation-driven validator="validator"/>
+    <mvc:annotation-driven validator="validator">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
     <bean id="validator"  class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
-	
+    
+    <mvc:resources location="/resources/" mapping="/resources/**"/>
+
 	<context:component-scan base-package="ua.controller" />
 <!-- 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
 <!-- 		<property name="prefix"> -->
@@ -37,4 +44,9 @@
 			</list>
 		</property>	
 	</bean>
+	<!-- Been для загрузки файлів -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/> -->
 </beans>

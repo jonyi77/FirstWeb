@@ -65,5 +65,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleRepository.findOne(parseId);
 		
 	}
+	public void addUrlFile(int id, String url){
+		Article article = articleRepository.findOne(id);
+		article.setImageUrl(url);
+		articleRepository.save(article);
+	}
 
 }

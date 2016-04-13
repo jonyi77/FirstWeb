@@ -112,13 +112,13 @@
 		<br>
 		<br>
 		<br>
-
 	</form>
 -->
 
 	<c:url value="/admin/article" var="url"/>
-	<sf:form method="POST" modelAttribute="article" action="${url}">
+	<sf:form method="POST" modelAttribute="article" enctype="multipart/form-data" action="${url}">
 	<sf:input path="id" type="hidden"/>
+
 	<table>
 		<tr>
 			<td>Введіть імя</td>
@@ -181,6 +181,10 @@
 				<sf:options items="${sizes}" itemValue="id" itemLabel="name"/>
 			</sf:select></td>
 		</tr>
+		<tr>
+			<td><label for="image">Article image:</label></td>
+			<td><input name="image" type="file" id="image"/></td>
+		</tr>
 	
 	</table>
 	<input type="submit" value="Add">
@@ -199,6 +203,7 @@
 			<th>Розмір</th>
 			<th>Ціна</th>
 			<th>Тип матеріалу</th>
+			<th>Шлях до картинки</th>
 		</tr>
 		<c:forEach var="article" items="${articles}">
 			<tr>
@@ -213,6 +218,7 @@
 				<td>${article.size.name}</td>
 				<td>${article.price}</td>
 				<td>${article.top}</td>
+				<td>${article.imageUrl}</td>
 				<td><c:url value="/admin/article/${article.id}" var="url" /><a
 					href="${url}">delete</a></td>
 				<td><c:url value="/admin/article/edit/${article.id}" var="url" /><a

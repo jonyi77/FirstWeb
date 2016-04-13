@@ -32,6 +32,8 @@ public class Article {
 	@ManyToOne
 	private Color color;
 	private String top;
+	private String imageUrl;
+
 
 	public Article() {
 	}
@@ -132,5 +134,13 @@ public class Article {
 		this.top = top;
 	}
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	
 	
 }
